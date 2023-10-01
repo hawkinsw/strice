@@ -1,0 +1,49 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>cr.obs.strice</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>Strice</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="whh8b@obs.cr" url="https://www.obs.cr">The Obscure</vendor>
+
+    <description><![CDATA[
+        Having Compiler Explorer at your fingertips is like watching a bolt of lightning strike. This plugin
+        allows you to send selected snippets of code to Compiler Explorer in one click.
+  ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+
+    </extensions>
+
+    <actions>
+        <!--
+          See https://plugins.jetbrains.com/docs/intellij/basic-action-system.html#registering-actions
+          for information about the elements and attributes used for actions and groups.
+
+          This <action> element adds a static menu item in first position of the Tools menu that shows PopupDialogAction.
+          Note this element has no text or description attributes because translations for them are given
+          by action-id in the resource-bundle.
+          An <override-text> element is also used for demonstration purposes to show alternate text and description strings
+          for this action's entries in the MainMenu. (Which includes the ToolsMenu. Try commenting out the override-text
+          element and see how the menu text changes.) The alternate text and description attributes do not
+          appear here because they are defined by action-id in the resource-bundle.
+        -->
+        <action id="cr.obs.strice.StriceAction" class="cr.obs.strice.StriceAction"
+                text="To Compiler Explorer ..." description="Send selected text to Compiler Explorer."
+                icon="META-INF/pluginIcon.png">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+            <override-text place="MainMenu" text="To Compiler Explorer ..."/>
+            <keyboard-shortcut first-keystroke="control alt C" second-keystroke="E" keymap="$default"/>
+        </action>
+    </actions>
+</idea-plugin>
